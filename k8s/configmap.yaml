@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bandwidth-config
+  namespace: bandwidth-monitor
+data:
+  DROP_THRESHOLD_MBPS: "10"
+  DROP_DETECTION_WINDOW_SECONDS: "10"
+  DROP_DURATION_THRESHOLD_SECONDS: "2"
+  ALERT_ADVANCE_MINUTES: "5"
+  SPEED_TEST_INTERVAL_MS: "1000"
+  NODE_ENV: "production" 

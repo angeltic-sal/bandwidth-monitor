@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  # Agent service
+  agent:
+    build: ./agent
+    container_name: bandwidth-agent
+    environment:
+      - NODE_ENV=production
+      - BACKEND_URL=ws://backend:4000/metrics
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - bandwidth-network
+
+  # Backend service
+  backend:
+    build: ./backend
+    container_name: bandwidth-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
+      - REDIS_URL=redis://redis:6379
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - VAPID_PUBLIC_KEY=${VAPID_PUBLIC_KEY}
+      - VAPID_PRIVATE_KEY=${VAPID_PRIVATE_KEY}
+    depends_on:
+      - influxdb
+      - redis
+    restart: unless-stopped
+    networks:
+      - bandwidth-network
+
+  # Frontend service
+  frontend:
+    build: ./frontend
+    container_name: bandwidth-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:4000
+      - REACT_APP_WS_URL=ws://localhost:4000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - bandwidth-network
+
+  # InfluxDB
+  influxdb:
+    image: influxdb:2.7
+    container_name: bandwidth-influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    restart: unless-stopped
+    networks:
+      - bandwidth-network
+
+  # Redis for BullMQ
+  redis:
+    image: redis:7-alpine
+    container_name: bandwidth-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - bandwidth-network
+
+volumes:
+  influxdb_data:
+  redis_data:
+
+networks:
+  bandwidth-network:
+    driver: bridge 

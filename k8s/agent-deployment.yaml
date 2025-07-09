@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent
+  namespace: bandwidth-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agent
+  template:
+    metadata:
+      labels:
+        app: agent
+    spec:
+      containers:
+      - name: agent
+        image: bandwidth-agent:latest
+        imagePullPolicy: Never  # For local development
+        env:
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: bandwidth-config
+              key: NODE_ENV
+        - name: BACKEND_URL
+          value: "ws://backend:4000"
+        - name: SPEED_TEST_INTERVAL_MS
+          valueFrom:
+            configMapKeyRef:
+              name: bandwidth-config
+              key: SPEED_TEST_INTERVAL_MS
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]  # Required for speed tests
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent
+  namespace: bandwidth-monitor
+spec:
+  selector:
+    app: agent
+  ports:
+  - port: 3001
+    targetPort: 3001
+  type: ClusterIP 

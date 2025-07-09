@@ -1,0 +1,22 @@
+{
+  "name": "bandwidth-agent",
+  "version": "1.0.0",
+  "description": "Internet bandwidth monitoring agent",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["bandwidth", "monitoring", "speedtest"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-speedtest-api": "^0.3.2",
+    "ws": "^8.14.2",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+} 

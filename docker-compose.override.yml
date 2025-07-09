@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  agent:
+    # volumes:
+    #   - ./agent:/app
+    #   - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm start
+
+  backend:
+    # volumes:
+    #   - ./backend:/app
+    #   - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm start
+
+  frontend:
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm start 

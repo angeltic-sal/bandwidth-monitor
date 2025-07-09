@@ -1,0 +1,276 @@
+.App {
+  text-align: center;
+}
+
+.App h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Additional styles for better visual hierarchy */
+.metrics-grid {
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  transition: transform 0.2s ease-in-out;
+  border: 2px solid #a67c52;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+}
+
+.chart-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling improvements */
+.settings-form {
+  text-align: left;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+}
+
+/* Button improvements */
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Status indicator animation */
+.status-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-direction: column;
+  }
+  
+  .nav-tab {
+    border-bottom: none;
+    border-right: 2px solid transparent;
+  }
+  
+  .nav-tab.active {
+    border-bottom: none;
+    border-right-color: #007bff;
+  }
+} 
+
+:root {
+  --primary-green: #3a5d3a;
+  --primary-green-dark: #274327;
+  --primary-green-light: #dbe8db;
+  --card-bg: #f7f9f7;
+  --text-primary: #232a23;
+  --text-secondary: #4a5a4a;
+  --accent-gradient: #3a5d3a;
+  --accent-gradient-dark: #274327;
+}
+
+body, .app-container {
+  background: #fff !important;
+  color: var(--text-primary);
+  font-family: 'Inter', Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-nav {
+  width: 100%;
+  background: #f7f9f7;
+  box-shadow: 0 2px 8px rgba(34, 60, 34, 0.06);
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1.5px solid #dbe8db;
+}
+.main-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 2rem;
+}
+.main-nav li {
+  margin: 0;
+}
+.main-nav a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  color: var(--primary-green-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.08rem;
+  transition: background 0.15s, color 0.15s;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  background: #dbe8db;
+  color: var(--primary-green-dark);
+}
+
+.app-container {
+  background: var(--card-bg);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.metrics-grid {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.metric-card {
+  background: #f7f9f7;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px rgba(34, 60, 34, 0.06);
+  padding: 2rem 2.5rem;
+  min-width: 220px;
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+.metric-card:hover {
+  box-shadow: 0 4px 18px rgba(34, 60, 34, 0.10);
+}
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-green-dark);
+  margin-bottom: 0.5rem;
+}
+.metric-label {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+.status-indicator {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+.status-connected {
+  background: #3a5d3a;
+  box-shadow: 0 0 6px #3a5d3a33;
+}
+.status-disconnected {
+  background: #b71c1c;
+  box-shadow: 0 0 6px #b71c1c33;
+}
+.card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px rgba(34, 60, 34, 0.06);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  border: 2px solid #a67c52;
+}
+h1, h2 {
+  color: var(--primary-green-dark);
+  font-weight: 700;
+}
+.btn, .btn-primary {
+  background: #3a5d3a;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 6px rgba(34, 60, 34, 0.06);
+}
+.btn:hover, .btn-primary:hover {
+  background: #274327;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .metrics-grid {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .card {
+    padding: 1.2rem 1rem;
+  }
+} 
+
+.disconnected-theme {
+  --primary-green: #a31515;
+  --primary-green-dark: #7a1010;
+  --primary-green-light: #f7dede;
+  --card-bg: #fdf7f7;
+  --text-primary: #3a2323;
+  --text-secondary: #5a4a4a;
+  --accent-gradient: #a31515;
+  --accent-gradient-dark: #7a1010;
+  transition: all 0.3s;
+}
+
+body, .app-container, .main-nav, .metric-card, .card, .btn, .btn-primary {
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+} 
+
+.disconnected-theme .main-nav {
+  background: #fdf7f7;
+  border-bottom: 1.5px solid #f7dede;
+}
+.disconnected-theme .metric-card {
+  background: #fdf7f7;
+  box-shadow: 0 2px 12px rgba(183, 28, 28, 0.06);
+}
+.disconnected-theme .card {
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(183, 28, 28, 0.06);
+}
+.disconnected-theme .metric-value {
+  color: #7a1010;
+}
+.disconnected-theme .metric-label {
+  color: #a31515;
+}
+.disconnected-theme h1, .disconnected-theme h2 {
+  color: #7a1010;
+} 

@@ -1,0 +1,86 @@
+/* Thoughts.css - styles for the Thoughts page */
+
+.thoughts-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: #f7f9f7;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px rgba(34, 60, 34, 0.06);
+  font-family: var(--font-family, 'Inter', Arial, sans-serif);
+  border: 2px solid #a67c52;
+}
+
+.thoughts-intro,
+.thoughts-followup,
+.thoughts-closing {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #4a5a4a;
+}
+
+.thoughts-screenshots-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.thoughts-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 8px rgba(34, 60, 34, 0.06);
+  padding: 1rem;
+  max-width: 340px;
+  width: 100%;
+  border: 2px solid #a67c52;
+}
+
+.thoughts-figure img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 4px rgba(34, 60, 34, 0.08);
+}
+
+.thoughts-figure figcaption {
+  font-size: 1rem;
+  color: #b71c1c;
+  background: #fdeaea;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.25rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+h1, h2 {
+  font-family: inherit;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #274327;
+}
+
+ul, ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.08rem;
+  color: #232a23;
+}
+
+@media (max-width: 700px) {
+  .thoughts-screenshots-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .thoughts-figure {
+    max-width: 100%;
+  }
+} 
