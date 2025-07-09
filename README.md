@@ -25,9 +25,10 @@ A simple app to monitor your internet speed in real time.
 
 - Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-  
 
-https://github.com/user-attachments/assets/5a938635-b817-4911-9d62-b4e0c4c76641
+
+https://github.com/user-attachments/assets/c70cc0ff-9f82-4a58-a6a5-7d0201876b50
+
 
 
 
