@@ -4,6 +4,8 @@ A simple app to monitor your internet speed in real time.
 
 ## Quick Start
 
+### Local Development
+
 1. Clone this repo and go to the folder:
    ```bash
    git clone <repo-url>
@@ -21,9 +23,25 @@ A simple app to monitor your internet speed in real time.
    docker-compose up -d
    ```
 
+### AWS EC2 Production Deployment
+
+For production deployment on AWS EC2 t2.large, see the comprehensive guide:
+
+📖 **[AWS Deployment Guide](README-AWS.md)**
+
+Quick deployment:
+```bash
+# On your EC2 instance
+./setup-ec2.sh
+cp env.prod.example .env
+# Edit .env with your configuration
+./deploy-aws.sh
+```
+
 ## Access the Dashboard
 
-- Open [http://localhost:3000](http://localhost:3000) in your browser.
+- **Local**: Open [http://localhost:3000](http://localhost:3000) in your browser
+- **AWS**: Open `http://your-ec2-public-ip` in your browser
 
 
 
