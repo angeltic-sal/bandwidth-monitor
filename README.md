@@ -41,7 +41,6 @@ cp env.prod.example .env
 ## Access the Dashboard
 
 - **Local**: Open [http://localhost:3000](http://localhost:3000) in your browser
-- **AWS**: Open `http://your-ec2-public-ip` in your browser
 
 
 
